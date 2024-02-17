@@ -1,7 +1,7 @@
 import DefaultLayout from "@layouts/DefaultLayout";
 import { useArticleRepositoryImplementation } from "@presentation/view-model/home/articleRepositoryImplementation";
 import { useArticleViewModel } from "@presentation/view-model/home/articleViewModel";
-import { Card, Col, Row, Skeleton } from "antd";
+import { Card, Col, Image, Row, Skeleton } from "antd";
 import Meta from "antd/es/card/Meta";
 import { useEffect, useState } from "react";
 import "./home-component.css";
@@ -45,7 +45,7 @@ const HomeComponent = () => {
     return (
         <DefaultLayout>
             <div className="home">
-                <Row gutter={[16, 16]}>
+                <Row gutter={[24, 24]}>
                     {isTrendingLoading ? (
                         <>
                             <Col span={isDesktop ? 12 : 24}>
@@ -71,7 +71,7 @@ const HomeComponent = () => {
                                         gutter={[16, 16]}
                                         style={{ marginTop: 16 }}
                                     >
-                                        {[0, 1].map((indicator) => (
+                                        {[0, 1, 2, 3].map((indicator) => (
                                             <Col
                                                 span={isDesktop ? 12 : 24}
                                                 key={indicator}
@@ -134,28 +134,35 @@ const HomeComponent = () => {
                         <>
                             <Col span={isDesktop ? 12 : 24}>
                                 {isDesktop && <h2>Trending Now</h2>}
-                                <Card
-                                    hoverable
-                                    cover={
-                                        <img
-                                            alt={trendingArticles[0]?.title}
-                                            src={
+                                <Link
+                                    to={"/news/" + trendingArticles[0]?.title}
+                                    state={trendingArticles[0]}
+                                >
+                                    <Card
+                                        hoverable
+                                        cover={
+                                            <Image
+                                                alt={trendingArticles[0]?.title}
+                                                src={
+                                                    trendingArticles[0]
+                                                        ?.urlToImage ||
+                                                    "https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-1.jpg"
+                                                }
+                                                height={300}
+                                            />
+                                        }
+                                        className="home__hero-card"
+                                    >
+                                        <Meta
+                                            title={trendingArticles[0]?.title}
+                                            description={
                                                 trendingArticles[0]
-                                                    ?.urlToImage ||
-                                                "https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-1.jpg"
+                                                    ?.description ||
+                                                "No content available"
                                             }
                                         />
-                                    }
-                                    className="home__hero-card"
-                                >
-                                    <Meta
-                                        title={trendingArticles[0]?.title}
-                                        description={
-                                            trendingArticles[0]?.content ||
-                                            "No content available"
-                                        }
-                                    />
-                                </Card>
+                                    </Card>
+                                </Link>
                                 <div className="home__content">
                                     {!isDesktop && <h2>Trending Now</h2>}
                                     <Row
@@ -163,36 +170,45 @@ const HomeComponent = () => {
                                         style={{ marginTop: 16 }}
                                     >
                                         {trendingArticles
-                                            .slice(1, 3)
+                                            .slice(1, trendingArticles.length)
                                             .map((article, index) => (
                                                 <Col
                                                     span={isDesktop ? 12 : 24}
                                                     key={index}
                                                 >
-                                                    <Card
-                                                        hoverable
-                                                        cover={
-                                                            <img
-                                                                alt={
+                                                    <Link
+                                                        to={
+                                                            "/news/" +
+                                                            article.title
+                                                        }
+                                                        state={article}
+                                                    >
+                                                        <Card
+                                                            hoverable
+                                                            cover={
+                                                                <Image
+                                                                    alt={
+                                                                        article.title
+                                                                    }
+                                                                    src={
+                                                                        article.urlToImage ||
+                                                                        "https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-1.jpg"
+                                                                    }
+                                                                    height={164}
+                                                                />
+                                                            }
+                                                        >
+                                                            <Meta
+                                                                title={
                                                                     article.title
                                                                 }
-                                                                src={
-                                                                    article.urlToImage ||
-                                                                    "https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-1.jpg"
+                                                                description={
+                                                                    article.description ||
+                                                                    "No content available"
                                                                 }
                                                             />
-                                                        }
-                                                    >
-                                                        <Meta
-                                                            title={
-                                                                article.title
-                                                            }
-                                                            description={
-                                                                article.content ||
-                                                                "No content available"
-                                                            }
-                                                        />
-                                                    </Card>
+                                                        </Card>
+                                                    </Link>
                                                 </Col>
                                             ))}
                                     </Row>
@@ -210,26 +226,38 @@ const HomeComponent = () => {
                                                 span={isDesktop ? 12 : 24}
                                                 key={index}
                                             >
-                                                <Card
-                                                    hoverable
-                                                    cover={
-                                                        <img
-                                                            alt={article.title}
-                                                            src={
-                                                                article.urlToImage ||
-                                                                "https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-1.jpg"
+                                                <Link
+                                                    to={
+                                                        "/news/" + article.title
+                                                    }
+                                                    state={article}
+                                                >
+                                                    <Card
+                                                        hoverable
+                                                        cover={
+                                                            <Image
+                                                                alt={
+                                                                    article.title
+                                                                }
+                                                                src={
+                                                                    article.urlToImage ||
+                                                                    "https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-1.jpg"
+                                                                }
+                                                                height={164}
+                                                            />
+                                                        }
+                                                    >
+                                                        <Meta
+                                                            title={
+                                                                article.title
+                                                            }
+                                                            description={
+                                                                article.description ||
+                                                                "No content available"
                                                             }
                                                         />
-                                                    }
-                                                >
-                                                    <Meta
-                                                        title={article.title}
-                                                        description={
-                                                            article.content ||
-                                                            "No content available"
-                                                        }
-                                                    />
-                                                </Card>
+                                                    </Card>
+                                                </Link>
                                             </Col>
                                         ))}
                                     </Row>

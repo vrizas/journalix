@@ -20,7 +20,7 @@ export const useArticleRepositoryImplementation = (): ArticleRepository => {
             setIsTrendingLoading(true);
             const response = await getArticles({
                 page: 1,
-                pageSize: 3,
+                pageSize: 5,
                 country: 'us',
             });
 
@@ -59,7 +59,7 @@ export const useArticleRepositoryImplementation = (): ArticleRepository => {
             setTrendingPage((prev) => prev + 1);
             const response = await getArticles({
                 page: trendingPage,
-                pageSize: 3,
+                pageSize: 5,
                 country: 'us',
             });
 

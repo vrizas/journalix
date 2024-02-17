@@ -40,14 +40,6 @@ const NavbarContent = () => {
                 Tech
             </Link>
             <Link
-                to="/family-n-education"
-                className={
-                    location.pathname === "/family-n-education" ? "active" : ""
-                }
-            >
-                Family & Education
-            </Link>
-            <Link
                 to="/works-n-career"
                 className={
                     location.pathname === "/works-n-career" ? "active" : ""
@@ -66,6 +58,7 @@ const NavbarContent = () => {
 };
 
 const DefaultLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
+    const location = useLocation();
     const [isDesktop, setIsDesktop] = useState(false);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -86,6 +79,14 @@ const DefaultLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
     };
 
     useEffect(() => {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
+    }, [location.pathname]);
+
+    useEffect(() => {
         const media = window.matchMedia("(min-width: 992px)");
 
         onDesktopScreen(media);
@@ -97,7 +98,16 @@ const DefaultLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
 
     return (
         <Layout>
-            <Header className="header">
+            <Header
+                className="header"
+                style={
+                    location.pathname !== "/" && !isDesktop
+                        ? {
+                              backgroundColor: "#191919",
+                          }
+                        : {}
+                }
+            >
                 {isDesktop ? (
                     <>
                         <img src={LogoText} alt="Logo" />
