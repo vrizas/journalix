@@ -1,6 +1,6 @@
-import { Article } from "@domain/entity/articleEntity";
+import { Article } from "../domain/entity/articleEntity";
 
-const API_KEY = import.meta.env.VITE_API_KEY;
+const API_KEY = 'e6c1bf1282d74345b955c66b1c1d07eb';
 
 export const getArticles = async ({
   page = 1,

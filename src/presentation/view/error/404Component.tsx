@@ -1,5 +1,5 @@
-import UnderConstruction from "@assets/images/under-construction.jpg";
-import DefaultLayout from "@layouts/DefaultLayout";
+import UnderConstruction from "../../../assets/images/under-construction.jpg";
+import DefaultLayout from "../../../layouts/DefaultLayout";
 
 const Error404Component = () => {
     return (

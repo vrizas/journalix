@@ -1,4 +1,4 @@
-import { Article } from "@domain/entity/articleEntity";
+import { Article } from "../entity/articleEntity";
 
 export interface ArticleRepository {
     trendingPage: number;

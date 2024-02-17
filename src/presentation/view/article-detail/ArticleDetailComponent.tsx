@@ -1,7 +1,7 @@
-import DefaultLayout from "@layouts/DefaultLayout";
+import DefaultLayout from "../../../layouts/DefaultLayout";
 import "./article-detail-component.css";
 import { useLocation } from "react-router-dom";
-import { Article } from "@domain/entity/articleEntity";
+import { Article } from "../../../domain/entity/articleEntity";
 import { Image } from "antd";
 
 const ArticleDetailComponent = () => {
@@ -11,7 +11,7 @@ const ArticleDetailComponent = () => {
     return (
         <DefaultLayout>
             <div className="article-detail">
-                <h2>{data?.title}</h2>
+                <h2 data-testid="article-title">{data?.title}</h2>
                 <Image
                     src={
                         data?.urlToImage ||

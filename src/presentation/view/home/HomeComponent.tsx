@@ -1,12 +1,13 @@
-import DefaultLayout from "@layouts/DefaultLayout";
-import { useArticleRepositoryImplementation } from "@presentation/view-model/home/articleRepositoryImplementation";
-import { useArticleViewModel } from "@presentation/view-model/home/articleViewModel";
+import DefaultLayout from "../../../layouts/DefaultLayout";
+import { useArticleRepositoryImplementation } from "../../view-model/home/articleRepositoryImplementation";
+import { useArticleViewModel } from "../../view-model/home/articleViewModel";
 import { Card, Col, Image, Row, Skeleton } from "antd";
-import Meta from "antd/es/card/Meta";
 import { useEffect, useState } from "react";
 import "./home-component.css";
 import { Link } from "react-router-dom";
 import { RightOutlined } from "@ant-design/icons";
+
+const { Meta } = Card;
 
 const HomeComponent = () => {
     const repository = useArticleRepositoryImplementation();
@@ -137,6 +138,7 @@ const HomeComponent = () => {
                                 <Link
                                     to={"/news/" + trendingArticles[0]?.title}
                                     state={trendingArticles[0]}
+                                    data-testid="trending-card"
                                 >
                                     <Card
                                         hoverable
@@ -182,6 +184,7 @@ const HomeComponent = () => {
                                                             article.title
                                                         }
                                                         state={article}
+                                                        data-testid="trending-card"
                                                     >
                                                         <Card
                                                             hoverable
@@ -231,6 +234,7 @@ const HomeComponent = () => {
                                                         "/news/" + article.title
                                                     }
                                                     state={article}
+                                                    data-testid="local-card"
                                                 >
                                                     <Card
                                                         hoverable

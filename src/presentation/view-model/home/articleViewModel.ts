@@ -1,6 +1,6 @@
-import { getLocalArticlesUseCase, getTrendingArticlesUseCase } from "@domain/interactors/getArticlesUseCase"
-import { loadMoreLocalArticlesUseCase, loadMoreTrendingArticlesUseCase } from "@domain/interactors/loadMoreArticlesUseCase";
-import { ArticleRepository } from "@domain/repository/articleRepository"
+import { getLocalArticlesUseCase, getTrendingArticlesUseCase } from "../../../domain/interactors/getArticlesUseCase"
+import { loadMoreLocalArticlesUseCase, loadMoreTrendingArticlesUseCase } from "../../../domain/interactors/loadMoreArticlesUseCase";
+import { ArticleRepository } from "../../../domain/repository/articleRepository"
 import { useCallback } from "react"
 
 export const useArticleViewModel = (repository: ArticleRepository) => {

@@ -1,11 +1,12 @@
 import { Drawer, Layout } from "antd";
-import { Footer, Header } from "antd/es/layout/layout";
-import LogoText from "@assets/logo-text.svg";
-import LogoCircle from "@assets/logo-circle.svg";
+import LogoText from "../assets/logo-text.svg";
+import LogoCircle from "../assets/logo-circle.svg";
 import "./default-layout.css";
 import { useEffect, useState } from "react";
 import { MenuOutlined } from "@ant-design/icons";
 import { Link, useLocation } from "react-router-dom";
+
+const { Header, Footer } = Layout;
 
 const NavbarContent = () => {
     const location = useLocation();

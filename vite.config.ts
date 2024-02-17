@@ -13,4 +13,8 @@ export default defineConfig({
       '@layouts': '/src/layouts',
     },
   },
+  test: {
+    environment: 'jsdom',
+    setupFiles: ['/src/__test__/setup/setup.ts'],
+  },
 })

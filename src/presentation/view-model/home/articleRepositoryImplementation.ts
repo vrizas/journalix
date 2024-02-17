@@ -1,6 +1,6 @@
-import { getArticles } from "@data/articleApi";
-import { Article } from "@domain/entity/articleEntity";
-import { ArticleRepository } from "@domain/repository/articleRepository";
+import { getArticles } from "../../../data/articleApi";
+import { Article } from "../../../domain/entity/articleEntity";
+import { ArticleRepository } from "../../../domain/repository/articleRepository";
 import { useCallback, useState } from "react";
 
 export const useArticleRepositoryImplementation = (): ArticleRepository => {

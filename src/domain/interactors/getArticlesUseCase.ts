@@ -1,4 +1,4 @@
-import { ArticleRepository } from "@domain/repository/articleRepository";
+import { ArticleRepository } from "../repository/articleRepository";
 
 type GetTrendingArticlesUseCase = Pick<ArticleRepository, 'getTrendingArticles'>;
 type GetLocalArticlesUseCase = Pick<ArticleRepository, 'getLocalArticles'>;
