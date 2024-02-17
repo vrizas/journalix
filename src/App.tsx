@@ -1,35 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import ArticleDetailComponent from "./presentation/view/article-detail/ArticleDetailComponent";
+import Error404Component from "./presentation/view/error/404Component";
+import HomeComponent from "./presentation/view/home/HomeComponent";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" Component={HomeComponent} />
+                <Route path="/news/:id" Component={ArticleDetailComponent} />
+                <Route path="*" Component={Error404Component} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
-export default App
+export default App;
