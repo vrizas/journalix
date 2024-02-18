@@ -38,13 +38,13 @@ bun install
 
 ```bash
 # with npm
-npm run start
+npm run dev
 
 # with yarn
-yarn start
+yarn dev
 
 # with bun
-bun start
+bun dev
 ```
 
 4. Run the tests
